@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Component
 public class CarDaoImp implements CarDao {
     private static int CAR_ID;
-    List<Car> carList = new ArrayList<>();
+    private final List<Car> carList = new ArrayList<>();
     {
         carList.add(new Car(++CAR_ID, "Ford", "Focus"));
         carList.add(new Car(++CAR_ID, "Opel", "Astra"));
@@ -21,10 +21,11 @@ public class CarDaoImp implements CarDao {
     }
     @Override
     public List<Car> countCarsList(int index) {
-        return carList.stream().skip(index).toList();
+        return carList.stream().limit(index).toList();
     }
 
-    public static int getCarId() {
-        return CAR_ID;
+    @Override
+    public List<Car> carList() {
+        return carList;
     }
 }

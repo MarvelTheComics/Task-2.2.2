@@ -24,9 +24,9 @@ public class CarsController {
     @GetMapping
     public String anyCars(@RequestParam(name = "count", required = false) Integer count, Model model) {
         if (count == null || count >= 5) {
-            model.addAttribute("cars", carDao.countCarsList(0));
+            model.addAttribute("cars", carDao.carList());
         } else {
-            model.addAttribute("cars", carDao.countCarsList(CarDaoImp.getCarId() - count));
+            model.addAttribute("cars", carDao.countCarsList(count));
         }
         return "cars";
     }
