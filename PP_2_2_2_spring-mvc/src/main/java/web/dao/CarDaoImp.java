@@ -19,8 +19,8 @@ public class CarDaoImp implements CarDao {
         carList.add(new Car(5, "LADA", "Largus"));
     }
     @Override
-    public List<Car> countCarsList(int index) {
-        return carList.stream().limit(index).toList();
+    public List<Car> countCarsList(int count) {
+        return carList.stream().limit(count).toList();
     }
 
     @Override

@@ -12,10 +12,11 @@ public class CarServiceImp implements CarService{
     @Autowired
     private CarDao carDao;
 
-    public List<Car> countCarsList(int index) {
-        return carDao.countCarsList(index);
-    }
-    public List<Car> carList() {
-        return carDao.carList();
+    public List<Car> carList(Integer count) {
+        if (count == null || count >= 5) {
+            return carDao.carList();
+        } else {
+            return carDao.countCarsList(count);
+        }
     }
 }
