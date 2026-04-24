@@ -10,14 +10,13 @@ import java.util.stream.Collectors;
 
 @Component
 public class CarDaoImp implements CarDao {
-    private static int CAR_ID;
     private final List<Car> carList = new ArrayList<>();
     {
-        carList.add(new Car(++CAR_ID, "Ford", "Focus"));
-        carList.add(new Car(++CAR_ID, "Opel", "Astra"));
-        carList.add(new Car(++CAR_ID, "Geely", "Coolray"));
-        carList.add(new Car(++CAR_ID, "Toyota", "Camry"));
-        carList.add(new Car(++CAR_ID, "LADA", "Largus"));
+        carList.add(new Car(1, "Ford", "Focus"));
+        carList.add(new Car(2, "Opel", "Astra"));
+        carList.add(new Car(3, "Geely", "Coolray"));
+        carList.add(new Car(4, "Toyota", "Camry"));
+        carList.add(new Car(5, "LADA", "Largus"));
     }
     @Override
     public List<Car> countCarsList(int index) {

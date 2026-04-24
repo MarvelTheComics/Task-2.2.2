@@ -4,29 +4,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.dao.CarDao;
-import web.dao.CarDaoImp;
+import web.service.CarService;
 
 @Controller
 @RequestMapping("/cars")
-public class CarsController {
-    private final CarDao carDao;
+public class CarController {
+    private final CarService carService;
 
     @Autowired
-    public CarsController(CarDao carDao) {
-        this.carDao = carDao;
+    public CarController(CarService carService) {
+        this.carService = carService;
     }
 
 
     @GetMapping
     public String anyCars(@RequestParam(name = "count", required = false) Integer count, Model model) {
         if (count == null || count >= 5) {
-            model.addAttribute("cars", carDao.carList());
+            model.addAttribute("cars", carService.carList());
         } else {
-            model.addAttribute("cars", carDao.countCarsList(count));
+            model.addAttribute("cars", carService.countCarsList(count));
         }
         return "cars";
     }
